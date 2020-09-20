@@ -10,13 +10,31 @@ body {
 body {
   display: -ms-flexbox;
   display: flex;
-  color: #fff;
+  color: $light;
   text-shadow: 0 .05rem .1rem rgba(0, 0, 0, .5);
   box-shadow: inset 0 0 5rem rgba(0, 0, 0, .5);
 }
 
 app-root {
   width: 100%;
+}
+
+.text-primary {
+  color: $primary !important;
+}
+
+.text-gray {
+  color: $gray !important;
+}
+
+.bg-primary {
+  background: $background !important;
+}
+
+.btn-primary, .btn-primary:hover {
+  background: $secondary;
+  color: $gray;
+  border: none;
 }
 
 .cover-container {
@@ -37,4 +55,35 @@ app-root {
   -moz-user-select: text;
   -ms-user-select: text;
   user-select: text;
+}
+
+.form-control, .form-control:focus, .form-control:disabled {
+  padding: 13px 15px 12px;
+  flex: 1 1 0;
+  min-width: 1%;
+  border: 0;
+  font: inherit;
+  line-height: 1.25;
+  background-color: $primary;
+  color: $gray;
+}
+
+textarea:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+.form-control:focus {
+  box-shadow: none;
+  outline: 0 none;
 }

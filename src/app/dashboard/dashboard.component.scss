@@ -1,3 +1,5 @@
+@import "src/variables";
+
 main {
   display: flex;
   flex-direction: column;
@@ -5,4 +7,9 @@ main {
   align-items: center;
   text-align: center;
   min-height: 92vh;
+}
+
+.card-body {
+  background: transparent;
+  border-color: $secondary;
 }

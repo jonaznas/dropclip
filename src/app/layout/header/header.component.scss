@@ -28,6 +28,10 @@
   border-bottom-color: #fff;
 }
 
+.nav-link {
+  transition: none;
+}
+
 @media (min-width: 48em) {
   .masthead-brand {
     float: left;
