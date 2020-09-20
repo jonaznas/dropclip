@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "secret-share": {
+    "dropclip": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -39,7 +39,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/secret-share",
+            "outputPath": "dist/dropclip",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -88,18 +88,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "secret-share:build"
+            "browserTarget": "dropclip:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "secret-share:build:production"
+              "browserTarget": "dropclip:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "secret-share:build"
+            "browserTarget": "dropclip:build"
           }
         },
         "test": {
@@ -136,16 +136,16 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "secret-share:serve"
+            "devServerTarget": "dropclip:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "secret-share:serve:production"
+              "devServerTarget": "dropclip:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "secret-share"
+  "defaultProject": "dropclip"
 }
