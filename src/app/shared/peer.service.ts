@@ -7,9 +7,12 @@ import AES from 'crypto-js/aes';
 })
 export class PeerService {
 
+  public localId: number;
+  public localPeer: Peer;
+  public peerConnection: Peer.DataConnection;
+
   constructor() {
   }
-
 
   private static generateSecret(length): string {
     let result = '';
@@ -21,24 +24,29 @@ export class PeerService {
     return result;
   }
 
-  generateId(min, max): number {
+  private static generateId(min, max): number {
     return Math.floor(Math.random() * (max - min)) + min;
   }
 
-  create(id: number): Peer {
-    return new Peer(`dropclip-peer-${id}`);
+  create(): Peer {
+    this.localId = PeerService.generateId(1000, 9999);
+    this.localPeer = new Peer(`dropclip-peer-${this.localId}`);
+
+    return this.localPeer;
   }
 
-  connect(peer: Peer, id: number): Peer.DataConnection {
+  connect(id: number): Peer.DataConnection {
     const secret = PeerService.generateSecret(256);
 
     sessionStorage.setItem('secret', secret);
 
-    return peer.connect(
+    this.peerConnection = this.localPeer.connect(
       `dropclip-peer-${id}`,
       {
         metadata: secret
       }
     );
+
+    return this.peerConnection;
   }
 }

@@ -4,20 +4,10 @@
     <p class="lead"></p>
 
     <div class="card card-body text-center">
-      <app-connection-information
-        id="{{ localId }}"
-      ></app-connection-information>
+      <router-outlet></router-outlet>
     </div>
 
-    <div>
-      <input
-        [(ngModel)]="connectId"
-        type="text"
-        class="form-control mb-3 mt-4"
-        placeholder="type an id">
-
-      <a (click)="connect()" class="btn btn-lg btn-primary btn-block">connect</a>
-    </div>
+    <app-connection-form></app-connection-form>
 
   </div>
 </main>

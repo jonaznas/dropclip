@@ -1,9 +1,18 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from 'src/app/dashboard/dashboard.component';
+import { ConnectionInformationComponent } from 'src/app/connection/connection-information/connection-information.component';
+import { ConnectionEmptyComponent } from 'src/app/connection/connection-empty/connection-empty.component';
 
 const routes: Routes = [
-  { path: '', component: DashboardComponent }
+  {
+    path: '',
+    component: DashboardComponent,
+    children: [
+      { path: '', component: ConnectionEmptyComponent },
+      { path: ':id', component: ConnectionInformationComponent }
+    ]
+  }
 ];
 
 @NgModule({
