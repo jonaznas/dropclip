@@ -10,6 +10,19 @@ main {
 }
 
 .card-body {
-  background: transparent;
+  background: $background;
   border-color: $secondary;
+  height: 7rem;
+  width: 101%;
+  z-index: 100;
+}
+
+.connection-interface {
+  position: fixed;
+  margin-top: -10rem;
+}
+
+.connection-control {
+  position: fixed;
+  margin-top: -10rem;
 }

@@ -10,7 +10,7 @@ const routes: Routes = [
     component: DashboardComponent,
     children: [
       { path: '', component: ConnectionEmptyComponent },
-      { path: ':id', component: ConnectionInformationComponent }
+      { path: 'c', component: ConnectionInformationComponent }
     ]
   }
 ];

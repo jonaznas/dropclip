@@ -9,6 +9,8 @@ import { HeaderComponent } from 'src/app/layout/header/header.component';
 import { ConnectionInformationComponent } from 'src/app/connection/connection-information/connection-information.component';
 import { ConnectionFormComponent } from './connection/connection-form/connection-form.component';
 import { ConnectionEmptyComponent } from './connection/connection-empty/connection-empty.component';
+import { ConnectionInterfaceComponent } from './connection/connection-interface/connection-interface.component';
+import { ConnectionControlComponent } from './connection/connection-control/connection-control.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { ConnectionEmptyComponent } from './connection/connection-empty/connecti
     HeaderComponent,
     ConnectionInformationComponent,
     ConnectionFormComponent,
-    ConnectionEmptyComponent
+    ConnectionEmptyComponent,
+    ConnectionInterfaceComponent,
+    ConnectionControlComponent
   ],
   imports: [
     BrowserModule,

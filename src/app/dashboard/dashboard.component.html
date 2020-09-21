@@ -4,10 +4,20 @@
     <p class="lead"></p>
 
     <div class="card card-body text-center">
-      <router-outlet></router-outlet>
+      <router-outlet class="mt-2"></router-outlet>
     </div>
 
-    <app-connection-form></app-connection-form>
+    <div class="connection-form">
+      <app-connection-form></app-connection-form>
+    </div>
+
+    <div class="connection-interface">
+      <app-connection-interface></app-connection-interface>
+    </div>
+
+    <div class="connection-control">
+      <app-connection-control></app-connection-control>
+    </div>
 
   </div>
 </main>

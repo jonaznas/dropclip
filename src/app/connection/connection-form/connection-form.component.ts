@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PeerService } from 'src/app/shared/peer.service';
 import { Router } from '@angular/router';
+import { AnimateService } from 'src/app/shared/animate.service';
 
 @Component({
   selector: 'app-connection-form',
@@ -13,7 +14,8 @@ export class ConnectionFormComponent implements OnInit {
 
   constructor(
     private peerService: PeerService,
-    private router: Router
+    private router: Router,
+    private animateService: AnimateService
   ) {
   }
 
@@ -24,7 +26,11 @@ export class ConnectionFormComponent implements OnInit {
     this.peerService.connect(+this.id);
 
     this.peerService.peerConnection.on('open', () => {
-      this.router.navigateByUrl(this.id);
+      this.router.navigateByUrl('c');
+    });
+
+    this.peerService.peerConnection.on('close', () => {
+      this.router.navigateByUrl('');
     });
   }
 }

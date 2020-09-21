@@ -9,7 +9,8 @@ export class PeerService {
 
   public localId: number;
   public localPeer: Peer;
-  public peerConnection: Peer.DataConnection;
+  public peerConnection: Peer.DataConnection = null;
+  public secondPeerConnection: Peer.DataConnection = null;
 
   constructor() {
   }

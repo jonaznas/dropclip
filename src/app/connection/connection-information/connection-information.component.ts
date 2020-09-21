@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PeerService } from 'src/app/shared/peer.service';
+import { AnimateService } from 'src/app/shared/animate.service';
 
 @Component({
   selector: 'app-connection-information',
@@ -9,18 +10,32 @@ import { PeerService } from 'src/app/shared/peer.service';
 })
 export class ConnectionInformationComponent implements OnInit, AfterViewInit {
 
-  public id: number;
+  public label = '';
 
   @ViewChild('subText') subText: ElementRef;
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
+    private animateService: AnimateService,
     private peerService: PeerService
   ) {
   }
 
   ngOnInit(): void {
-    this.id = +this.route.snapshot.paramMap.get('id');
+    const conn = this.peerService.peerConnection;
+    const secConn = this.peerService.secondPeerConnection;
+
+    if (secConn != null) {
+      this.label = secConn.label;
+      this.animateService.showConnectionControl();
+    } else if (conn != null) {
+      this.label = conn.label;
+      this.animateService.showConnectionInterface();
+    } else {
+      this.router.navigateByUrl('');
+      return;
+    }
   }
 
   ngAfterViewInit(): void {
