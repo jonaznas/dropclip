@@ -11,7 +11,7 @@ export class AnimateService {
 
   showConnectionInterface(): void {
     anime({ targets: '.connection-form', translateY: -133, duration: 500, easing: 'spring(0, 20, 30, 0)' });
-    anime({ targets: '.connection-interface', translateY: 100, duration: 500, delay: 500, easing: 'spring(0, 20, 30, 0)' });
+    anime({ targets: '.connection-interface', translateY: 130, duration: 500, delay: 500, easing: 'spring(0, 20, 30, 0)' });
   }
 
   showConnectionControl(): void {

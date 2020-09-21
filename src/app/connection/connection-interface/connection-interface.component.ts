@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PeerService } from 'src/app/shared/peer.service';
 
 @Component({
   selector: 'app-connection-interface',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ConnectionInterfaceComponent implements OnInit {
 
-  constructor() { }
+  public content;
+
+  constructor(
+    private peerService: PeerService
+  ) {
+  }
 
   ngOnInit(): void {
   }
 
+  transfer(): void {
+    this.peerService.secondPeerConnection.send(this.content);
+  }
 }

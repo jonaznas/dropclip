@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PeerService } from 'src/app/shared/peer.service';
 import { Router } from '@angular/router';
-import { AnimateService } from 'src/app/shared/animate.service';
 
 @Component({
   selector: 'app-connection-form',
@@ -14,8 +13,7 @@ export class ConnectionFormComponent implements OnInit {
 
   constructor(
     private peerService: PeerService,
-    private router: Router,
-    private animateService: AnimateService
+    private router: Router
   ) {
   }
 
