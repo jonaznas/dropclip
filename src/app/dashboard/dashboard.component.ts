@@ -1,15 +1,31 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewChecked, AfterViewInit, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { AnimateService } from 'src/app/shared/animate.service';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements AfterViewChecked {
 
-  constructor() {
+  public connectionInterface = false;
+  public connectionControl = false;
+
+  constructor(
+    public animateService: AnimateService,
+    private changeDetector: ChangeDetectorRef
+  ) {
   }
 
-  ngOnInit(): void {
+  ngAfterViewChecked(): void {
+    this.animateService.connectionInterfaceSubject.subscribe((show: boolean) => {
+      this.connectionInterface = show;
+    });
+
+    this.animateService.connectionControlSubject.subscribe((show: boolean) => {
+      this.connectionControl = show;
+    });
+
+    this.changeDetector.detectChanges();
   }
 }

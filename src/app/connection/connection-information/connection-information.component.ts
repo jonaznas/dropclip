@@ -13,6 +13,7 @@ export class ConnectionInformationComponent implements OnInit, AfterViewInit {
   public label = '';
 
   @ViewChild('subText') subText: ElementRef;
+  @ViewChild('spinner') spinner: ElementRef;
 
   constructor(
     private route: ActivatedRoute,
@@ -28,6 +29,7 @@ export class ConnectionInformationComponent implements OnInit, AfterViewInit {
 
     if (secConn != null) {
       this.label = secConn.label;
+      console.log(this.peerService.peerConnection);
       this.animateService.showConnectionControl();
     } else if (conn != null) {
       this.label = conn.label;
@@ -39,7 +41,12 @@ export class ConnectionInformationComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.subText.nativeElement.classList.remove('text-gray');
-    this.subText.nativeElement.classList.add('text-success');
+    try {
+      this.spinner.nativeElement.classList.add('d-none');
+      this.subText.nativeElement.classList.remove('text-gray');
+      this.subText.nativeElement.classList.add('text-success');
+    } catch (_) {
+      return;
+    }
   }
 }

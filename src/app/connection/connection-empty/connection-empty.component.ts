@@ -20,6 +20,8 @@ export class ConnectionEmptyComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.animateService.hideConnection();
+
     this.peerService.create();
 
     this.peerService.localPeer.on('connection', conn => {
@@ -29,21 +31,17 @@ export class ConnectionEmptyComponent implements OnInit {
         return;
       }
 
-      console.log(conn.label);
-
       sessionStorage.setItem('secret', conn.metadata);
       this.peerService.secondPeerConnection = conn;
       this.router.navigateByUrl('c');
     });
 
     this.peerService.localPeer.on('close', () => {
-      console.log('local closed');
       this.peerService.secondPeerConnection = null;
       this.animateService.hideConnection();
     });
 
     this.peerService.localPeer.on('disconnected', () => {
-      console.log('local disconnected');
       this.peerService.secondPeerConnection = null;
       this.animateService.hideConnection();
     });

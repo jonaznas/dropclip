@@ -19,6 +19,9 @@ export class ConnectionInterfaceComponent implements OnInit {
   }
 
   transfer(): void {
-    this.peerService.secondPeerConnection.send(this.content);
+    if (this.content !== '') {
+      this.peerService.peerConnection.send(this.content);
+      this.content = '';
+    }
   }
 }

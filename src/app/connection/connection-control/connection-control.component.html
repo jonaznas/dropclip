@@ -1,0 +1,18 @@
+<input
+  [(ngModel)]="publicData"
+  type="text"
+  class="form-control mb-3 mt-4 select"
+  placeholder=""
+  disabled>
+
+<div class="row">
+  <div class="col-lg-6">
+    <a (click)="copy()" ngxClipboard [cbContent]="secretData" class="btn btn-block btn-primary" #copyBtn>
+      <span *ngIf="!showCopyAnimation">Copy</span>
+      <app-animation-copy *ngIf="showCopyAnimation"></app-animation-copy>
+    </a>
+  </div>
+  <div class="col-lg-6">
+    <a (click)="close()" class="btn btn-block btn-primary">Close</a>
+  </div>
+</div>

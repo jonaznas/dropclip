@@ -12,11 +12,11 @@
     </div>
 
     <div class="connection-interface">
-      <app-connection-interface></app-connection-interface>
+      <app-connection-interface *ngIf="connectionInterface"></app-connection-interface>
     </div>
 
     <div class="connection-control">
-      <app-connection-control></app-connection-control>
+      <app-connection-control *ngIf="connectionControl"></app-connection-control>
     </div>
 
   </div>

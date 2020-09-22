@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import Peer from 'peerjs';
 import AES from 'crypto-js/aes';
 
@@ -12,7 +13,9 @@ export class PeerService {
   public peerConnection: Peer.DataConnection = null;
   public secondPeerConnection: Peer.DataConnection = null;
 
-  constructor() {
+  constructor(
+    private router: Router
+  ) {
   }
 
   private static generateSecret(length): string {
@@ -47,6 +50,14 @@ export class PeerService {
         metadata: secret
       }
     );
+
+    this.peerConnection.on('open', () => {
+      this.router.navigateByUrl('c');
+    });
+
+    this.peerConnection.on('close', () => {
+      this.router.navigateByUrl('');
+    });
 
     return this.peerConnection;
   }
