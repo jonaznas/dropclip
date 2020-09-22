@@ -11,6 +11,8 @@ import { ConnectionFormComponent } from './connection/connection-form/connection
 import { ConnectionEmptyComponent } from './connection/connection-empty/connection-empty.component';
 import { ConnectionInterfaceComponent } from './connection/connection-interface/connection-interface.component';
 import { ConnectionControlComponent } from './connection/connection-control/connection-control.component';
+import { ClipboardModule } from 'ngx-clipboard';
+import { AnimationCopyComponent } from './shared/animation-copy/animation-copy.component';
 
 @NgModule({
   declarations: [
@@ -21,12 +23,14 @@ import { ConnectionControlComponent } from './connection/connection-control/conn
     ConnectionFormComponent,
     ConnectionEmptyComponent,
     ConnectionInterfaceComponent,
-    ConnectionControlComponent
+    ConnectionControlComponent,
+    AnimationCopyComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ClipboardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
