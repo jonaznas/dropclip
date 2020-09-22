@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import Peer from 'peerjs';
-import AES from 'crypto-js/aes';
 
 @Injectable({
   providedIn: 'root'

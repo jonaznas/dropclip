@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { PeerService } from 'src/app/shared/peer.service';
 import { Router } from '@angular/router';
+import * as CryptoJS from 'crypto-js';
 
 @Component({
   selector: 'app-connection-control',
@@ -32,7 +33,10 @@ export class ConnectionControlComponent implements OnInit {
     });
   }
 
-  processData(data: string): void {
+  processData(raw: string): void {
+    const bytes = CryptoJS.AES.decrypt(raw, sessionStorage.getItem('secret'));
+    const data = bytes.toString(CryptoJS.enc.Utf8);
+
     this.publicData = data;
     this.secretData = data;
   }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PeerService } from 'src/app/shared/peer.service';
+import AES from 'crypto-js/aes';
 
 @Component({
   selector: 'app-connection-interface',
@@ -20,7 +21,9 @@ export class ConnectionInterfaceComponent implements OnInit {
 
   transfer(): void {
     if (this.content !== '') {
-      this.peerService.peerConnection.send(this.content);
+      const hash = AES.encrypt(this.content, sessionStorage.getItem('secret')).toString();
+
+      this.peerService.peerConnection.send(hash);
       this.content = '';
     }
   }
